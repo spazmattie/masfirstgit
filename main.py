@@ -1,6 +1,6 @@
 import sys
 
-import flask
+from flask import Flask
 import matplotlib
 import pandas as pd
 import requests
