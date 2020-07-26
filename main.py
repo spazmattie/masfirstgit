@@ -12,4 +12,5 @@ r = requests.get("https://www.google.com/")
 
 print(r.status_code)
 
-print("LMAO")
+for i in range(5):
+    print("ok")
