@@ -1,11 +1,11 @@
 import sys
 
 from flask import Flask
-import matplotlib
+import matplotlib.pyplot as plt 
 import pandas as pd
 import requests
 
-print(sys.executable)
+# print(sys.executable)
 # print(sys.version)
 
 r = requests.get("https://www.google.com/")
