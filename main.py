@@ -1,14 +1,14 @@
 import sys
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for
 
 app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return render_template("index.html", name='MATT', age=16)
+    return render_template("index.html")
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
 
 # print(sys.executable)
 # print(sys.version)
