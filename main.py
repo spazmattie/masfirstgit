@@ -1,16 +1,14 @@
 import sys
+from flask import Flask, render_template
 
-from flask import Flask
-import matplotlib.pyplot as plt 
-import pandas as pd
-import requests
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return render_template("index.html", name='MATT', age=16)
+
+if __name__ == "__main__":
+    app.run()
 
 # print(sys.executable)
 # print(sys.version)
-
-r = requests.get("https://www.google.com/")
-
-print(r.status_code)
-
-for i in range(5):
-    print("ok")
