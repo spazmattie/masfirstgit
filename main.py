@@ -16,6 +16,16 @@ def graph():
 def about():
     return render_template("about.html")
 
+@app.route("/resources.html")
+def resources():
+    return render_template("resources.html")
+
+@app.route("/regents.html")
+def regents():
+    return render_template("regents.html")
+
+
+
 if __name__ == "__main__":
     app.run(debug=True)
 

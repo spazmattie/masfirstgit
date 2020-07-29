@@ -2,7 +2,7 @@
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-        <title>{% block title %} About {% endblock %}</title>
+        <title> About </title>
     </head>
 
     <body>
@@ -20,14 +20,14 @@
                   <a class="nav-link" href="about.html"> About </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Whatever Else</a>
+                  <a class="nav-link" href="resources.html"> Resources </a>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     View Graphs
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#"> Regent Exam Scores </a>
+                    <a class="dropdown-item nav-link" href="regents.html"> Regent Exam Scores </a>
                     <a class="dropdown-item" href="#"> Math State Test Scores </a>
                     <a class="dropdown-item" href="#">Something else here</a>
                   </div>
@@ -49,19 +49,30 @@
     </body>
 </html>
 
-<h1>
-  About the creators
-</h1>
+<body>
+  <h1>
+    About this Website
+  </h1>
+
+  <p> Who are the Creators? </p>
+</body>
+
 
 <style>
+  body {
+      background-color: #800020;
+  }
+
   h1 {
     text-align: center;
-    font-family: Times New Roman;
     color: black;
+    font-family: cambria;
     font-weight: bolder;
   }
 
-  body {
-      background-color: #800020;
+  p {
+    font-size: 32px;
+    font-family: Cambria;
+    color: black;
   }
 </style>
