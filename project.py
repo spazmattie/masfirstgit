@@ -50,4 +50,4 @@ plt.title('Algebra 2/Trig 2017 Racial Makeup')
 plt.show()
 
 
-
+import psycopg2 as ps 
