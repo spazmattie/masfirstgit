@@ -20,6 +20,10 @@ def resources():
 def regents():
     return render_template("regents.html")
 
+@app.route("/java")
+def java():
+    return render_template("java.html")
+
 
 
 
