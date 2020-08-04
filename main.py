@@ -12,10 +12,6 @@ def home():
 def graph():
     return render_template("graph.html")
 
-@app.route("/about.html")
-def about():
-    return render_template("about.html")
-
 @app.route("/resources.html")
 def resources():
     return render_template("resources.html")
