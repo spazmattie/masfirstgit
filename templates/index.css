@@ -1,0 +1,22 @@
+body {
+    background-color: #E1F2F7;
+  }
+
+h1 {
+    text-align: center;
+    color: black;
+    font-family: cambria;
+    font-weight: bolder;
+}
+
+p {
+    font-size: 20px;
+    font-family: Cambria;
+    text-align: left;
+    color: black;
+}
+
+img {
+    position: absolute;
+    right: 0%;
+}

@@ -1,7 +1,6 @@
-import sys
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, request, render_template, make_response
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='', static_folder='')
 
 @app.route("/")
 @app.route("/index.html")
@@ -20,15 +19,21 @@ def resources():
 def regents():
     return render_template("regents.html")
 
-@app.route("/java")
+@app.route("/java.html")
 def java():
     return render_template("java.html")
+
+@app.route("/mathexams.html")
+def math():
+    return render_template("mathexams.html")
+
+
 
 
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='127.0.0.1', port=5050, debug=True)
 
 # print(sys.executable)
 # print(sys.version)
