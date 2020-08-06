@@ -16,13 +16,12 @@ h2 {
 }
 
 h3 {
-    width: 50%;
     text-align: left; 
     color: #000066; 
     font-family: cambria; 
     padding-left: 160px;
     font-size: 30px;
-    
+    width: 50%;
 }
 
 h4 {
@@ -42,5 +41,6 @@ p {
     color: #000066;
     padding-left: 30px;
     padding-right: 30px;
-    width: 50%;
+    width: 50%; 
 }
+
