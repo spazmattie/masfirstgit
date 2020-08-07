@@ -1,6 +1,31 @@
+#problem {
+    text-align: left;
+    font-size: 20px;
+    font-family: Cambria;
+    padding-left: 30px;
+    padding-right: 30px;
+    width: 50%;
+}
+
+#racialinequality {
+    text-align: left;
+    font-size: 20px;
+    font-family: Cambria;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+#econdisparity {
+    text-align: left;
+    font-size: 20px;
+    font-family: Cambria;
+    padding-left: 30px;
+    padding-right: 30px;
+    
+}
+
 h1 {
     text-align: center;
-    color: #000066;
     font-family: cambria;
     padding-left: 30px;
     padding-right: 30px;
@@ -9,38 +34,24 @@ h1 {
 h2 {
     width: 50%;
     text-align: left; 
-    color: #000066; 
     font-family: cambria; 
     padding-left: 160px;
     font-size: 30px;
 }
 
 h3 {
-    text-align: left; 
-    color: #000066; 
+    text-align: center; 
     font-family: cambria; 
-    padding-left: 160px;
     font-size: 30px;
-    width: 50%;
 }
 
 h4 {
-    width: 50%;
-    text-align: left;
-    color: #000066;
+    text-align: center;
     font-family: cambria;
-    padding-left: 170px; 
     font-size: 30px;  
     font-weight: bolder;
 }
 
-p {
-    font-size: 20px;
-    font-family: Cambria;
-    text-align: left;
-    color: #000066;
-    padding-left: 30px;
-    padding-right: 30px;
-    width: 50%; 
-}
+
+
 

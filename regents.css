@@ -1,0 +1,21 @@
+#chart1 {
+    width: 60px;
+    float: left;
+    height: 60px;
+    
+}
+
+#chart2 {
+    width: 50%;
+    float: right;
+}
+
+#chart3 {
+    width: 50%;
+    float: left;
+}
+
+#chart5 {
+    width: 50%;
+    float: left;
+}
