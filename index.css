@@ -24,6 +24,14 @@
     
 }
 
+#purposeofwebiste {
+    text-align: left;
+    font-size: 20px;
+    font-family: Cambria;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
 h1 {
     text-align: center;
     font-family: cambria;
@@ -49,8 +57,14 @@ h4 {
     text-align: center;
     font-family: cambria;
     font-size: 30px;  
-    font-weight: bolder;
 }
+
+h5 {
+    text-align: center;
+    font-family: cambria;
+    font-size: 30px;  
+}
+
 
 
 

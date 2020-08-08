@@ -1,21 +1,42 @@
-#chart1 {
-    width: 60px;
-    float: left;
-    height: 60px;
-    
+#regenttitle {
+    text-align: center;
+    color: black;
+    font-family: cambria;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
-#chart2 {
-    width: 50%;
+#regentexplanation {
+    font-size: 20px;
+    font-family: Cambria;
+    color: black;
+    padding-left: 60px;
+    padding-right: 60px;
+    text-align: center;
+}
+
+#race {
+    float: left;
+}
+
+#gender {
     float: right;
 }
 
-#chart3 {
-    width: 50%;
+#races {
+    width: 550px;
+    height: 200px;
     float: left;
 }
 
-#chart5 {
-    width: 50%;
-    float: left;
+#genders {
+    width: 550px;
+    height: 200px;
+    float: right;
+}
+
+h2 {
+    text-align: center; 
+    font-family: cambria; 
+    font-size: 30px;
 }

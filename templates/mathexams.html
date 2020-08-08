@@ -3,7 +3,9 @@
         <link rel="stylesheet" href="index.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link href="state-test.css" rel="stylesheet" type="text/css">
         <title> Home Page </title>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
     </head>
 
     <body>
@@ -26,8 +28,7 @@
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item nav-link" href="regents.html"> Regent Exam Scores </a>
-                    <a class="dropdown-item" href="mathexams.html"> Math State Test Scores </a>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item nav link" href="mathexams.html"> Math State Test Scores </a>
                   </div>
                 </li>
               </ul>
@@ -43,5 +44,3237 @@
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" 
         crossorigin="anonymous"></script>
 
-    </body>
+  <h1 style="font-weight: bolder;"> <u> State Exam Scores </u> </h1>
+
+  <div style="text-align: center;">
+    <p id="intro"> Students in New York City (along with the rest of the state) take state exams every year from 3rd grade to 8th grade, one for English, and one for Math.
+      We analyzed data of the percentage of students scoring in each threshold in the math state exam based on three factors; race, gender, and economic standing.
+      Some pretty interesting patterns were found.
+    </p>
+
+    <p id="econstand" style="font-weight: bolder;"> <u> Economic Standpoint </u> </p>
+
+    <p id="econstanddes"> From the graphs below, we can see a very clear positive correlation of a student's economic standpoint and their test scores. The scores are split off into 4 levels,
+      with 1 being the lowest, and 4 being the highest. 
+      Those who are economically disadvantaged have lower average test scores than those who are well off.  For 4 of the boroughs, this attribute  holds true,
+      but for The Bronx, we have a special case. Even students who are economically stable still have a higher chance on average of scoring within 
+      the range of a level 1. This could be due to other factors like the poverty level of the Bronx, or the amount of Black and Hispanic people
+      living in the Bronx (numbers have shown that they tend to score lower on tests). In the span of 5 years, the gap has closed at varying rates 
+      depending on the borough. This is most likely due to changes in curriculum, changes in the test, or just plain improvement in the performance 
+      of students.
+    </p>
+  </div>
+
+<div id="notecon" style="width: 600px; height: 600px;">
+    <canvas id="chart1"></canvas>
+    <script>
+      var ctx = document.getElementById("chart1");
+      var barColor = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ["2015", "2016", "2017", "2018", "2019"],
+          datasets: [{
+            label: "% Level 1",
+            backgroundColor: "red",
+            borderColor: "red",
+            data: [37.4, 36.9, 39.3, 32.9, 30.3],
+          },
+
+          {
+            label: "% Level 2",
+            backgroundColor: "blue",
+            borderColor: "blue",
+            data: [33.5, 32.5, 29.8, 26.6, 26.2],
+          },
+
+          {
+            label: "% Level 3",
+            backgroundColor: "green",
+            borderColor: "green",
+            data: [18.1, 18.3, 18.6, 22.4, 23.0],
+          },
+
+          {
+            label: "% Level 4",
+            backgroundColor: "purple",
+            borderColor: "purple",
+            data: [11.0, 12.3, 12.3, 18.1, 20.4],
+          }
+          ],
+        },
+        options: {
+          title: {
+            display: true,
+            text: 'Not Economically Disadvantaged Percentiles (Bronx)'
+          },
+            scales: {
+              xAxes: [{
+                time: {
+                  unit: 'month'
+                },
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Year'
+                },
+                gridLines: {
+                  display: false
+                },
+                ticks: {
+                  maxTicksLimit: 6
+                }
+              }],
+              yAxes: [{
+                ticks: {
+                  min: 0,
+                  max: 100,
+                  maxTicksLimit: 10
+                },
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Percentage'
+                  },
+                gridLines: {
+                  display: true
+                }
+            }],
+          },
+          legend: {
+            display: true
+          }
+        }
+      });
+    </script>
+
+    <canvas id="chart2"></canvas>
+    <script>
+      var ctx = document.getElementById("chart2");
+      var barColor = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ["2015", "2016", "2017", "2018", "2019"],
+          datasets: [{
+            label: "% Level 1",
+            backgroundColor: "red",
+            borderColor: "red",
+            data: [21.3, 20.6, 19.9, 16.3, 14.6],
+          },
+
+          {
+            label: "% Level 2",
+            backgroundColor: "blue",
+            borderColor: "blue",
+            data: [27.4, 26.1, 24.4, 19.2, 18.9],
+          },
+
+          {
+            label: "% Level 3",
+            backgroundColor: "green",
+            borderColor: "green",
+            data: [25.3, 23.1, 25.3, 25.8, 25.4],
+          },
+
+          {
+            label: "% Level 4",
+            backgroundColor: "purple",
+            borderColor: "purple",
+            data: [26.0, 30.2, 30.3, 38.8, 41.0],
+          }
+          ],
+        },
+        options: {
+          title: {
+            display: true,
+            text: 'Not Economically Disadvantaged Percentiles (Brooklyn)'
+          },
+            scales: {
+              xAxes: [{
+                time: {
+                  unit: 'month'
+                },
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Year'
+                },
+                gridLines: {
+                  display: false
+                },
+                ticks: {
+                  maxTicksLimit: 6
+                }
+              }],
+              yAxes: [{
+                ticks: {
+                  min: 0,
+                  max: 100,
+                  maxTicksLimit: 10
+                },
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Percentage'
+                  },
+                gridLines: {
+                  display: true
+                }
+            }],
+          },
+          legend: {
+            display: true
+          }
+        }
+      });
+    </script>
+
+    <canvas id="chart3"></canvas>
+    <script>
+      var ctx = document.getElementById("chart3");
+      var barColor = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ["2015", "2016", "2017", "2018", "2019"],
+          datasets: [{
+            label: "% Level 1",
+            backgroundColor: "red",
+            borderColor: "red",
+            data: [13.6, 14.1, 12.9, 11.0, 9.6],
+          },
+
+          {
+            label: "% Level 2",
+            backgroundColor: "blue",
+            borderColor: "blue",
+            data: [20.1, 18.9, 17.4, 13.2, 12.6],
+          },
+
+          {
+            label: "% Level 3",
+            backgroundColor: "green",
+            borderColor: "green",
+            data: [26.2, 23.8, 25.1, 23.8, 23.0],
+          },
+
+          {
+            label: "% Level 4",
+            backgroundColor: "purple",
+            borderColor: "purple",
+            data: [40.2, 43.1, 44.6, 52.0, 54.8],
+          }
+          ],
+        },
+        options: {
+          title: {
+            display: true,
+            text: 'Not Economically Disadvantaged Percentiles (Manhattan)'
+          },
+            scales: {
+              xAxes: [{
+                time: {
+                  unit: 'month'
+                },
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Year'
+                },
+                gridLines: {
+                  display: false
+                },
+                ticks: {
+                  maxTicksLimit: 6
+                }
+              }],
+              yAxes: [{
+                ticks: {
+                  min: 0,
+                  max: 100,
+                  maxTicksLimit: 10
+                },
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Percentage'
+                  },
+                gridLines: {
+                  display: true
+                }
+            }],
+          },
+          legend: {
+            display: true
+          }
+        }
+      });
+    </script>
+
+    <canvas id="chart4"></canvas>
+    <script>
+      var ctx = document.getElementById("chart4");
+      var barColor = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ["2015", "2016", "2017", "2018", "2019"],
+          datasets: [{
+            label: "% Level 1",
+            backgroundColor: "red",
+            borderColor: "red",
+            data: [18.3, 18.8, 19.8, 17.1, 16.2],
+          },
+
+          {
+            label: "% Level 2",
+            backgroundColor: "blue",
+            borderColor: "blue",
+            data: [27.9, 27.8, 25.8, 20.4, 19.9],
+          },
+
+          {
+            label: "% Level 3",
+            backgroundColor: "green",
+            borderColor: "green",
+            data: [26.2, 23.7, 24.8, 25.1, 24.8],
+          },
+
+          {
+            label: "% Level 4",
+            backgroundColor: "purple",
+            borderColor: "purple",
+            data: [27.6, 29.7, 29.6, 37.4, 39.0],
+          }
+          ],
+        },
+        options: {
+          title: {
+            display: true,
+            text: 'Not Economically Disadvantaged Percentiles (Queens)'
+          },
+            scales: {
+              xAxes: [{
+                time: {
+                  unit: 'month'
+                },
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Year'
+                },
+                gridLines: {
+                  display: false
+                },
+                ticks: {
+                  maxTicksLimit: 6
+                }
+              }],
+              yAxes: [{
+                ticks: {
+                  min: 0,
+                  max: 100,
+                  maxTicksLimit: 10
+                },
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Percentage'
+                  },
+                gridLines: {
+                  display: true
+                }
+            }],
+          },
+          legend: {
+            display: true
+          }
+        }
+      });
+    </script>
+
+    <canvas id="chart5"></canvas>
+    <script>
+      var ctx = document.getElementById("chart5");
+      var barColor = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ["2015", "2016", "2017", "2018", "2019"],
+          datasets: [{
+            label: "% Level 1",
+            backgroundColor: "red",
+            borderColor: "red",
+            data: [15.1, 14.9, 15.7, 14.2, 13.7],
+          },
+
+          {
+            label: "% Level 2",
+            backgroundColor: "blue",
+            borderColor: "blue",
+            data: [32.3, 30.2, 28.3, 22.4, 21.3],
+          },
+
+          {
+            label: "% Level 3",
+            backgroundColor: "green",
+            borderColor: "green",
+            data: [28.5, 28.1, 29.3, 29.7, 28.6],
+          },
+
+          {
+            label: "% Level 4",
+            backgroundColor: "purple",
+            borderColor: "purple",
+            data: [24.1, 26.8, 26.7, 33.7, 36.5],
+          }
+          ],
+        },
+        options: {
+          title: {
+            display: true,
+            text: 'Not Economically Disadvantaged Percentiles (Staten Island)'
+          },
+            scales: {
+              xAxes: [{
+                time: {
+                  unit: 'month'
+                },
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Year'
+                },
+                gridLines: {
+                  display: false
+                },
+                ticks: {
+                  maxTicksLimit: 6
+                }
+              }],
+              yAxes: [{
+                ticks: {
+                  min: 0,
+                  max: 100,
+                  maxTicksLimit: 10
+                },
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Percentage'
+                  },
+                gridLines: {
+                  display: true
+                }
+            }],
+          },
+          legend: {
+            display: true
+          }
+        }
+      });
+    </script>
+  </div>
+
+  <div id="econ" style="width: 600px; height: 600px;">
+    <canvas id="chart6"></canvas>
+    <script>
+      var ctx = document.getElementById("chart6");
+      var barColor = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ["2015", "2016", "2017", "2018", "2019"],
+          datasets: [{
+            label: "% Level 1",
+            backgroundColor: "red",
+            borderColor: "red",
+            data: [48.2, 47.3, 48.5, 47.8, 44.2],
+          },
+
+          {
+            label: "% Level 2",
+            backgroundColor: "blue",
+            borderColor: "blue",
+            data: [32.9, 33.0, 31.2, 27.4, 27.6],
+          },
+
+          {
+            label: "% Level 3",
+            backgroundColor: "green",
+            borderColor: "green",
+            data: [13.6, 13.4, 14.0, 16.4, 17.9],
+          },
+
+          {
+            label: "% Level 4",
+            backgroundColor: "purple",
+            borderColor: "purple",
+            data: [5.3, 6.3, 6.3, 8.4, 10.3],
+          }
+          ],
+        },
+        options: {
+          title: {
+            display: true,
+            text: 'Economically Disadvantaged Percentiles (Bronx)'
+          },
+            scales: {
+              xAxes: [{
+                time: {
+                  unit: 'month'
+                },
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Year'
+                },
+                gridLines: {
+                  display: false
+                },
+                ticks: {
+                  maxTicksLimit: 6
+                }
+              }],
+              yAxes: [{
+                ticks: {
+                  min: 0,
+                  max: 100,
+                  maxTicksLimit: 10
+                },
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Percentage'
+                  },
+                gridLines: {
+                  display: true
+                }
+            }],
+          },
+          legend: {
+            display: true
+          }
+        }
+      });
+      </script>
+
+      <canvas id="chart7"></canvas>
+      <script>
+        var ctx = document.getElementById("chart7");
+        var barColor = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ["2015", "2016", "2017", "2018", "2019"],
+            datasets: [{
+              label: "% Level 1",
+              backgroundColor: "red",
+              borderColor: "red",
+              data: [36.4, 35.1, 35.9, 34.1, 32.3],
+            },
+
+            {
+              label: "% Level 2",
+              backgroundColor: "blue",
+              borderColor: "blue",
+              data: [32.4, 32.1, 30.2, 26.3, 25.3],
+            },
+
+            {
+              label: "% Level 3",
+              backgroundColor: "green",
+              borderColor: "green",
+              data: [18.5, 17.9, 18.7, 20.7, 21.0],
+            },
+
+            {
+              label: "% Level 4",
+              backgroundColor: "purple",
+              borderColor: "purple",
+              data: [12.7, 14.8, 15.1, 18.9, 21.4],
+            }
+            ],
+          },
+          options: {
+            title: {
+              display: true,
+              text: 'Economically Disadvantaged Percentiles (Brooklyn)'
+            },
+              scales: {
+                xAxes: [{
+                  time: {
+                    unit: 'month'
+                  },
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Year'
+                  },
+                  gridLines: {
+                    display: false
+                  },
+                  ticks: {
+                    maxTicksLimit: 6
+                  }
+                }],
+                yAxes: [{
+                  ticks: {
+                    min: 0,
+                    max: 100,
+                    maxTicksLimit: 10
+                  },
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Percentage'
+                  },
+                  gridLines: {
+                    display: true
+                  }
+              }],
+            },
+            legend: {
+              display: true
+            }
+          }
+        });
+      </script>
+
+      <canvas id="chart8"></canvas>
+      <script>
+        var ctx = document.getElementById("chart8");
+        var barColor = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ["2015", "2016", "2017", "2018", "2019"],
+            datasets: [{
+              label: "% Level 1",
+              backgroundColor: "red",
+              borderColor: "red",
+              data: [40.2, 39.7, 40.0, 39.2, 35.4],
+            },
+
+            {
+              label: "% Level 2",
+              backgroundColor: "blue",
+              borderColor: "blue",
+              data: [32.4, 32.0, 30.3, 26.0, 26.0],
+            },
+
+            {
+              label: "% Level 3",
+              backgroundColor: "green",
+              borderColor: "green",
+              data: [17.0, 16.5, 17.3, 19.5, 20.4],
+            },
+
+            {
+              label: "% Level 4",
+              backgroundColor: "purple",
+              borderColor: "purple",
+              data: [10.4, 11.8, 12.4, 15.3, 18.2],
+            }
+            ],
+          },
+          options: {
+            title: {
+              display: true,
+              text: 'Economically Disadvantaged Percentiles (Manhattan)'
+            },
+              scales: {
+                xAxes: [{
+                  time: {
+                    unit: 'month'
+                  },
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Year'
+                  },
+                  gridLines: {
+                    display: false
+                  },
+                  ticks: {
+                    maxTicksLimit: 6
+                  }
+                }],
+                yAxes: [{
+                  ticks: {
+                    min: 0,
+                    max: 100,
+                    maxTicksLimit: 10
+                  },
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Percentage'
+                  },
+                  gridLines: {
+                    display: true
+                  }
+              }],
+            },
+            legend: {
+              display: true
+            }
+          }
+        });
+      </script>
+
+      <canvas id="chart9"></canvas>
+      <script>
+        var ctx = document.getElementById("chart9");
+        var barColor = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ["2015", "2016", "2017", "2018", "2019"],
+            datasets: [{
+              label: "% Level 1",
+              backgroundColor: "red",
+              borderColor: "red",
+              data: [28.5, 28.1, 29.5, 29.3, 27.6],
+            },
+
+            {
+              label: "% Level 2",
+              backgroundColor: "blue",
+              borderColor: "blue",
+              data: [33.3, 33.2, 31.3, 26.2, 25.9],
+            },
+
+            {
+              label: "% Level 3",
+              backgroundColor: "green",
+              borderColor: "green",
+              data: [22.1, 21.0, 21.4, 22.9, 23.0],
+            },
+
+            {
+              label: "% Level 4",
+              backgroundColor: "purple",
+              borderColor: "purple",
+              data: [16.2, 17.8, 17.9, 21.6, 23.5],
+            }
+            ],
+          },
+          options: {
+            title: {
+              display: true,
+              text: 'Economically Disadvantaged Percentiles (Queens)'
+            },
+              scales: {
+                xAxes: [{
+                  time: {
+                    unit: 'month'
+                  },
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Year'
+                  },
+                  gridLines: {
+                    display: false
+                  },
+                  ticks: {
+                    maxTicksLimit: 6
+                  }
+                }],
+                yAxes: [{
+                  ticks: {
+                    min: 0,
+                    max: 100,
+                    maxTicksLimit: 10
+                  },
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Percentage'
+                  },
+                  gridLines: {
+                    display: true
+                  }
+              }],
+            },
+            legend: {
+              display: true
+            }
+          }
+        });
+      </script>
+
+      <canvas id="chart10"></canvas>
+      <script>
+        var ctx = document.getElementById("chart10");
+        var barColor = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ["2015", "2016", "2017", "2018", "2019"],
+            datasets: [{
+              label: "% Level 1",
+              backgroundColor: "red",
+              borderColor: "red",
+              data: [35.9, 36.8, 36.8, 36.5, 33.6],
+            },
+
+            {
+              label: "% Level 2",
+              backgroundColor: "blue",
+              borderColor: "blue",
+              data: [34.9, 34.2, 32.2, 27.5, 26.9],
+            },
+
+            {
+              label: "% Level 3",
+              backgroundColor: "green",
+              borderColor: "green",
+              data: [19.6, 18.2, 19.8, 21.1, 22.1],
+            },
+
+            {
+              label: "% Level 4",
+              backgroundColor: "purple",
+              borderColor: "purple",
+              data: [9.7, 10.8, 11.3, 14.9, 17.4],
+            }
+            ],
+          },
+          options: {
+            title: {
+              display: true,
+              text: 'Economically Disadvantaged Percentiles (Staten Island)'
+            },
+              scales: {
+                xAxes: [{
+                  time: {
+                    unit: 'month'
+                  },
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Year'
+                  },
+                  gridLines: {
+                    display: false
+                  },
+                  ticks: {
+                    maxTicksLimit: 6
+                  }
+                }],
+                yAxes: [{
+                  ticks: {
+                    min: 0,
+                    max: 100,
+                    maxTicksLimit: 10
+                  },
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Percentage'
+                  },
+                  gridLines: {
+                    display: true
+                  }
+              }],
+            },
+            legend: {
+              display: true
+            }
+          }
+        });
+      </script>
+  </div>
+
+  <div>
+    <h3 style="margin-top: 1550px; font-weight: bolder;" id="gentitle">
+      <u> Gender </u>
+    </h3>
+
+    <p id="genderexp"> 
+      According to the score chart based on gender, boys tend to score higher on average than girls, and that trend stays constant for all 5 years.  However, What's surprising is how quickly the ratios of
+      the score ranges for girls evened out. For example, in 2015, about 77% of girls in Manhattan scored within the range of a level 2 or 1, but by 2019, 
+      that number had decreased to about 57%, with about 43% scoring within a 3 or 4. This trend is present in all 5 boroughs, which also could be 
+      an effect of a change in the curriculum, a change in the test, or an improvement in the performance of girls in school. 
+
+    </p>
+  </div>
+
+    <div id="males" style="width: 600px; height: 600px;">
+      <canvas id="chart11"></canvas>
+      <script>
+        var ctx = document.getElementById("chart11");
+        var barColor = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ["2015", "2016", "2017", "2018", "2019"],
+            datasets: [{
+              label: "% Level 1",
+              backgroundColor: "red",
+              borderColor: "red",
+              data: [32.2, 24.1, 27.0, 26.0, 28.0],
+            },
+
+            {
+              label: "% Level 2",
+              backgroundColor: "blue",
+              borderColor: "blue",
+              data: [26.9, 32.4, 31.0, 34.7, 32.9],
+            },
+
+            {
+              label: "% Level 3",
+              backgroundColor: "green",
+              borderColor: "green",
+              data: [19.4, 24.0, 22.6, 23.3, 23.4],
+            },
+
+            {
+              label: "% Level 4",
+              backgroundColor: "purple",
+              borderColor: "purple",
+              data: [21.5, 19.5, 19.4, 16.0, 15.7],
+            }
+            ],
+          },
+          options: {
+            title: {
+              display: true,
+              text: 'Male Percentiles (Bronx)'
+            },
+              scales: {
+                xAxes: [{
+                  time: {
+                    unit: 'month'
+                  },
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Year'
+                  },
+                  gridLines: {
+                    display: false
+                  },
+                  ticks: {
+                    maxTicksLimit: 6
+                  }
+                }],
+                yAxes: [{
+                  ticks: {
+                    min: 0,
+                    max: 100,
+                    maxTicksLimit: 10
+                  },
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Percentage'
+                  },
+                  gridLines: {
+                    display: true
+                  }
+              }],
+            },
+            legend: {
+              display: true
+            }
+          }
+        });
+      </script>
+
+      <canvas id="chart12"></canvas>
+      <script>
+        var ctx = document.getElementById("chart12");
+        var barColor = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ["2015", "2016", "2017", "2018", "2019"],
+            datasets: [{
+              label: "% Level 1",
+              backgroundColor: "red",
+              borderColor: "red",
+              data: [31.7, 23.9, 26.6, 26.0, 28.6],
+            },
+
+            {
+              label: "% Level 2",
+              backgroundColor: "blue",
+              borderColor: "blue",
+              data: [26.1, 32.3, 30.8, 33.0, 32.0],
+            },
+
+            {
+              label: "% Level 3",
+              backgroundColor: "green",
+              borderColor: "green",
+              data: [18.7, 22.4, 21.2, 23.3, 21.7],
+            },
+
+            {
+              label: "% Level 4",
+              backgroundColor: "purple",
+              borderColor: "purple",
+              data: [23.6, 21.4, 21.4, 17.8, 17.7],
+            }
+            ],
+          },
+          options: {
+            title: {
+              display: true,
+              text: 'Male Percentiles (Brooklyn)'
+            },
+              scales: {
+                xAxes: [{
+                  time: {
+                    unit: 'month'
+                  },
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Year'
+                  },
+                  gridLines: {
+                    display: false
+                  },
+                  ticks: {
+                    maxTicksLimit: 6
+                  }
+                }],
+                yAxes: [{
+                  ticks: {
+                    min: 0,
+                    max: 100,
+                    maxTicksLimit: 10
+                  },
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Percentage'
+                  },
+                  gridLines: {
+                    display: true
+                  }
+              }],
+            },
+            legend: {
+              display: true
+            }
+          }
+        });
+      </script>
+
+      <canvas id="chart13"></canvas>
+      <script>
+        var ctx = document.getElementById("chart13");
+        var barColor = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ["2015", "2016", "2017", "2018", "2019"],
+            datasets: [{
+              label: "% Level 1",
+              backgroundColor: "red",
+              borderColor: "red",
+              data: [30.4, 25.0, 27.8, 26.2, 29.2],
+            },
+
+            {
+              label: "% Level 2",
+              backgroundColor: "blue",
+              borderColor: "blue",
+              data: [24.0, 30.4, 28.8, 31.6, 29.4],
+            },
+
+            {
+              label: "% Level 3",
+              backgroundColor: "green",
+              borderColor: "green",
+              data: [20.2, 22.6, 22.2, 24.1, 23.7],
+            },
+
+            {
+              label: "% Level 4",
+              backgroundColor: "purple",
+              borderColor: "purple",
+              data: [25.4, 22.0, 21.2, 18.2, 17.7],
+            }
+            ],
+          },
+          options: {
+            title: {
+              display: true,
+              text: 'Male Percentiles (Manhattan)'
+            },
+              scales: {
+                xAxes: [{
+                  time: {
+                    unit: 'month'
+                  },
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Year'
+                  },
+                  gridLines: {
+                    display: false
+                  },
+                  ticks: {
+                    maxTicksLimit: 6
+                  }
+                }],
+                yAxes: [{
+                  ticks: {
+                    min: 0,
+                    max: 100,
+                    maxTicksLimit: 10
+                  },
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Percentage'
+                  },
+                  gridLines: {
+                    display: true
+                  }
+              }],
+            },
+            legend: {
+              display: true
+            }
+          }
+        });
+      </script>
+
+      <canvas id="chart14"></canvas>
+      <script>
+        var ctx = document.getElementById("chart14");
+        var barColor = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ["2015", "2016", "2017", "2018", "2019"],
+            datasets: [{
+              label: "% Level 1",
+              backgroundColor: "red",
+              borderColor: "red",
+              data: [30.0, 25.0, 27.4, 26.1, 28.7],
+            },
+
+            {
+              label: "% Level 2",
+              backgroundColor: "blue",
+              borderColor: "blue",
+              data: [20.2, 25.4, 24.2, 26.2, 24.7],
+            },
+
+            {
+              label: "% Level 3",
+              backgroundColor: "green",
+              borderColor: "green",
+              data: [20.8, 24.0, 23.0, 25.1, 24.1],
+            },
+
+            {
+              label: "% Level 4",
+              backgroundColor: "purple",
+              borderColor: "purple",
+              data: [28.9, 25.7, 25.4, 22.5, 22.5],
+            }
+            ],
+          },
+          options: {
+            title: {
+              display: true,
+              text: 'Male Percentiles (Queens)'
+            },
+              scales: {
+                xAxes: [{
+                  time: {
+                    unit: 'month'
+                  },
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Year'
+                  },
+                  gridLines: {
+                    display: false
+                  },
+                  ticks: {
+                    maxTicksLimit: 6
+                  }
+                }],
+                yAxes: [{
+                  ticks: {
+                    min: 0,
+                    max: 100,
+                    maxTicksLimit: 10
+                  },
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Percentage'
+                  },
+                  gridLines: {
+                    display: true
+                  }
+              }],
+            },
+            legend: {
+              display: true
+            }
+          }
+        });
+      </script>
+
+    <canvas id="chart15"></canvas>
+    <script>
+      var ctx = document.getElementById("chart15");
+      var barColor = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ["2015", "2016", "2017", "2018", "2019"],
+          datasets: [{
+            label: "% Level 1",
+            backgroundColor: "red",
+            borderColor: "red",
+            data: [26.6, 23.3, 25.6, 24.5, 26.4],
+          },
+
+          {
+            label: "% Level 2",
+            backgroundColor: "blue",
+            borderColor: "blue",
+            data: [20.3, 24.8, 23.7, 25.6, 23.6],
+          },
+
+          {
+            label: "% Level 3",
+            backgroundColor: "green",
+            borderColor: "green",
+            data: [21.1, 24.1, 23.0, 24.9, 24.5],
+          },
+
+          {
+            label: "% Level 4",
+            backgroundColor: "purple",
+            borderColor: "purple",
+            data: [32.0, 27.9, 27.7, 25.0, 25.5],
+          }
+          ],
+        },
+        options: {
+          title: {
+            display: true,
+            text: 'Male Percentiles (Staten Island)'
+          },
+            scales: {
+              xAxes: [{
+                time: {
+                  unit: 'month'
+                },
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Year'
+                },
+                gridLines: {
+                  display: false
+                },
+                ticks: {
+                  maxTicksLimit: 6
+                }
+              }],
+              yAxes: [{
+                ticks: {
+                  min: 0,
+                  max: 100,
+                  maxTicksLimit: 10
+                },
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Percentage'
+                  },
+                gridLines: {
+                  display: true
+                }
+            }],
+          },
+          legend: {
+            display: true
+          }
+        }
+      });
+    </script>
+    </div>
+
+    <div id="females" style="width: 600px; height: 600px;">
+      <canvas id="chart16"></canvas>
+      <script>
+        var ctx = document.getElementById("chart16");
+        var barColor = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ["2015", "2016", "2017", "2018", "2019"],
+            datasets: [{
+              label: "% Level 1",
+              backgroundColor: "red",
+              borderColor: "red",
+              data: [44.5, 48.6, 31.0, 34.2, 28.7],
+            },
+
+            {
+              label: "% Level 2",
+              backgroundColor: "blue",
+              borderColor: "blue",
+              data: [34.3, 31.8, 31.9, 30.3, 28.9],
+            },
+
+            {
+              label: "% Level 3",
+              backgroundColor: "green",
+              borderColor: "green",
+              data: [15.0, 13.6, 21.2, 19.3, 21.4],
+            },
+
+            {
+              label: "% Level 4",
+              backgroundColor: "purple",
+              borderColor: "purple",
+              data: [6.3, 6.0, 15.9, 16.1, 21.0],
+            }
+            ],
+          },
+          options: {
+            title: {
+              display: true,
+              text: 'Female Percentiles (Bronx)'
+            },
+              scales: {
+                xAxes: [{
+                  time: {
+                    unit: 'month'
+                  },
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Year'
+                  },
+                  gridLines: {
+                    display: false
+                  },
+                  ticks: {
+                    maxTicksLimit: 6
+                  }
+                }],
+                yAxes: [{
+                  ticks: {
+                    min: 0,
+                    max: 100,
+                    maxTicksLimit: 10
+                  },
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Percentage'
+                  },
+                  gridLines: {
+                    display: true
+                  }
+              }],
+            },
+            legend: {
+              display: true
+            }
+          }
+        });
+      </script>
+
+<canvas id="chart17"></canvas>
+<script>
+  var ctx = document.getElementById("chart17");
+  var barColor = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ["2015", "2016", "2017", "2018", "2019"],
+      datasets: [{
+        label: "% Level 1",
+        backgroundColor: "red",
+        borderColor: "red",
+        data: [43.3, 48.1, 29.5, 33.0, 28.0],
+      },
+
+      {
+        label: "% Level 2",
+        backgroundColor: "blue",
+        borderColor: "blue",
+        data: [34.5, 31.4, 31.6, 29.4, 28.0],
+      },
+
+      {
+        label: "% Level 3",
+        backgroundColor: "green",
+        borderColor: "green",
+        data: [14.7, 13.6, 20.0, 18.7, 20.0],
+      },
+
+      {
+        label: "% Level 4",
+        backgroundColor: "purple",
+        borderColor: "purple",
+        data: [7.5, 7.0, 18.9, 19.0, 24.0],
+      }
+      ],
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Female Percentiles (Brooklyn)'
+      },
+        scales: {
+          xAxes: [{
+            time: {
+              unit: 'month'
+            },
+            scaleLabel: {
+              display: true,
+              labelString: 'Year'
+            },
+            gridLines: {
+              display: false
+            },
+            ticks: {
+              maxTicksLimit: 6
+            }
+          }],
+          yAxes: [{
+            ticks: {
+              min: 0,
+              max: 100,
+              maxTicksLimit: 10
+            },
+            scaleLabel: {
+                    display: true,
+                    labelString: 'Percentage'
+                  },
+            gridLines: {
+              display: true
+            }
+        }],
+      },
+      legend: {
+        display: true
+      }
+    }
+  });
+</script>
+
+<canvas id="chart18"></canvas>
+<script>
+  var ctx = document.getElementById("chart18");
+  var barColor = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ["2015", "2016", "2017", "2018", "2019"],
+      datasets: [{
+        label: "% Level 1",
+        backgroundColor: "red",
+        borderColor: "red",
+        data: [44.5, 49.5, 30.1, 33.0, 27.4],
+      },
+
+      {
+        label: "% Level 2",
+        backgroundColor: "blue",
+        borderColor: "blue",
+        data: [32.6, 29.5, 29.5, 27.8, 26.1],
+      },
+
+      {
+        label: "% Level 3",
+        backgroundColor: "green",
+        borderColor: "green",
+        data: [15.5, 14.0, 21.2, 19.9, 20.8],
+      },
+
+      {
+        label: "% Level 4",
+        backgroundColor: "purple",
+        borderColor: "purple",
+        data: [7.4, 7.0, 19.2, 19.3, 25.6],
+      }
+      ],
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Female Percentiles (Manhattan)'
+      },
+        scales: {
+          xAxes: [{
+            time: {
+              unit: 'month'
+            },
+            scaleLabel: {
+              display: true,
+              labelString: 'Year'
+            },
+            gridLines: {
+              display: false
+            },
+            ticks: {
+              maxTicksLimit: 6
+            }
+          }],
+          yAxes: [{
+            ticks: {
+              min: 0,
+              max: 100,
+              maxTicksLimit: 10
+            },
+            scaleLabel: {
+                    display: true,
+                    labelString: 'Percentage'
+                  },
+            gridLines: {
+              display: true
+            }
+        }],
+      },
+      legend: {
+        display: true
+      }
+    }
+  });
+</script>
+
+<canvas id="chart19"></canvas>
+<script>
+  var ctx = document.getElementById("chart19");
+  var barColor = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ["2015", "2016", "2017", "2018", "2019"],
+      datasets: [{
+        label: "% Level 1",
+        backgroundColor: "red",
+        borderColor: "red",
+        data: [43.6, 48.3, 29.0, 31.2, 26.6],
+      },
+
+      {
+        label: "% Level 2",
+        backgroundColor: "blue",
+        borderColor: "blue",
+        data: [28.5, 26.2, 25.4, 24.1, 22.0],
+      },
+
+      {
+        label: "% Level 3",
+        backgroundColor: "green",
+        borderColor: "green",
+        data: [18.0, 16.2, 22.4, 21.2, 21.5],
+      },
+
+      {
+        label: "% Level 4",
+        backgroundColor: "purple",
+        borderColor: "purple",
+        data: [9.9, 9.2, 23.2, 23.4, 29.9],
+      }
+      ],
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Female Percentiles (Queens)'
+      },
+        scales: {
+          xAxes: [{
+            time: {
+              unit: 'month'
+            },
+            scaleLabel: {
+              display: true,
+              labelString: 'Year'
+            },
+            gridLines: {
+              display: false
+            },
+            ticks: {
+              maxTicksLimit: 6
+            }
+          }],
+          yAxes: [{
+            ticks: {
+              min: 0,
+              max: 100,
+              maxTicksLimit: 10
+            },
+            scaleLabel: {
+                    display: true,
+                    labelString: 'Percentage'
+                  },
+            gridLines: {
+              display: true
+            }
+        }],
+      },
+      legend: {
+        display: true
+      }
+    }
+  });
+</script>
+
+    <canvas id="chart20"></canvas>
+        <script>
+          var ctx = document.getElementById("chart20");
+          var barColor = new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: ["2015", "2016", "2017", "2018", "2019"],
+              datasets: [{
+                label: "% Level 1",
+                backgroundColor: "red",
+                borderColor: "red",
+                data: [40.6, 44.3, 27.0, 29.2, 24.0],
+              },
+
+              {
+                label: "% Level 2",
+                backgroundColor: "blue",
+                borderColor: "blue",
+                data: [28.5, 26.4, 24.6, 23.0, 21.2],
+              },
+
+              {
+                label: "% Level 3",
+                backgroundColor: "green",
+                borderColor: "green",
+                data: [19.1, 17.9, 22.4, 21.7, 21.8],
+              },
+
+              {
+                label: "% Level 4",
+                backgroundColor: "purple",
+                borderColor: "purple",
+                data: [11.9, 11.3, 25.9, 26.1, 33.0],
+              }
+              ],
+            },
+            options: {
+              title: {
+                display: true,
+                text: 'Female Percentiles (Staten Island)'
+              },
+                scales: {
+                  xAxes: [{
+                    time: {
+                      unit: 'month'
+                    },
+                    scaleLabel: {
+                      display: true,
+                      labelString: 'Year'
+                    },
+                    gridLines: {
+                      display: false
+                    },
+                    ticks: {
+                      maxTicksLimit: 6
+                    }
+                  }],
+                  yAxes: [{
+                    ticks: {
+                      min: 0,
+                      max: 100,
+                      maxTicksLimit: 10
+                    },
+                    gridLines: {
+                      display: true
+                    }
+                }],
+              },
+              legend: {
+                display: true
+              }
+            }
+          });
+        </script>
+      </div>
+
+      <div>
+        <h4 style="margin-top: 1500px; font-weight: bolder;" id="racialgroup">
+          <u> Racial Group </u>
+        </h4>
+
+        <p id="racialexp"> The biggest disproportionality is in the racial data. White and Asian students have been performing
+          considerably better than Hispanic and Black students for the past 5 years. and in 2019, a larger portion of Black and 
+          Hispanic students earned scores in the level 1 range than higher score ranges, which is a troubling parameter. These low scores 
+          could be a product of a lack of guidance and motivation. Blacks and Hispanics are extremely underrepresented in the STEM field, 
+          and kids may not have a role model or guide to push them to do well on things like exams that you may need to excel in to 
+          have a career in STEM.
+        </p>
+      </div>
+
+    <div style="margin-top: 0px;">
+      <div id="asianperc" style="width: 600; height: 600;">
+        <canvas id="chart21"></canvas>
+        <script>
+          var ctx = document.getElementById("chart21");
+          var barColor = new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: ["2015", "2016", "2017", "2018", "2019"],
+              datasets: [{
+                label: "% Level 1",
+                backgroundColor: "red",
+                borderColor: "red",
+                data: [19.2, 21.1, 22.7, 21.4, 18.9],
+              },
+
+              {
+                label: "% Level 2",
+                backgroundColor: "blue",
+                borderColor: "blue",
+                data: [29.6, 28.5, 26.4, 23.0, 21.9],
+              },
+
+              {
+                label: "% Level 3",
+                backgroundColor: "green",
+                borderColor: "green",
+                data: [25.5, 25.4, 26.5, 26.2, 24.6],
+              },
+
+              {
+                label: "% Level 4",
+                backgroundColor: "purple",
+                borderColor: "purple",
+                data: [25.7, 25.1, 24.4, 29.4, 34.6],
+              }
+              ],
+            },
+            options: {
+              title: {
+                display: true,
+                text: 'Asian Percentiles (Bronx)'
+              },
+                scales: {
+                  xAxes: [{
+                    time: {
+                      unit: 'month'
+                    },
+                    scaleLabel: {
+                      display: true,
+                      labelString: 'Year'
+                    },
+                    gridLines: {
+                      display: false
+                    },
+                    ticks: {
+                      maxTicksLimit: 6
+                    }
+                  }],
+                  yAxes: [{
+                    ticks: {
+                      min: 0,
+                      max: 100,
+                      maxTicksLimit: 10
+                    },
+                    scaleLabel: {
+                      display: true,
+                      labelString: 'Percentage'
+                    },
+                    gridLines: {
+                      display: true
+                    }
+                }],
+              },
+              legend: {
+                display: true
+              }
+            }
+          });
+        </script>
+
+        <canvas id="chart22"></canvas>
+        <script>
+          var ctx = document.getElementById("chart22");
+          var barColor = new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: ["2015", "2016", "2017", "2018", "2019"],
+              datasets: [{
+                label: "% Level 1",
+                backgroundColor: "red",
+                borderColor: "red",
+                data: [11.3, 11.3, 11.5, 11.6, 10.2],
+              },
+
+              {
+                label: "% Level 2",
+                backgroundColor: "blue",
+                borderColor: "blue",
+                data: [21.9, 21.3, 20.4, 16.5, 15.3],
+              },
+
+              {
+                label: "% Level 3",
+                backgroundColor: "green",
+                borderColor: "green",
+                data: [28.1, 25.3, 26.5, 24.4, 23.4],
+              },
+
+              {
+                label: "% Level 4",
+                backgroundColor: "purple",
+                borderColor: "purple",
+                data: [38.7, 42.1, 41.5, 47.5, 51.2],
+              }
+              ],
+            },
+            options: {
+              title: {
+                display: true,
+                text: 'Asian Percentiles (Brooklyn)'
+              },
+                scales: {
+                  xAxes: [{
+                    time: {
+                      unit: 'month'
+                    },
+                    scaleLabel: {
+                      display: true,
+                      labelString: 'Year'
+                    },
+                    gridLines: {
+                      display: false
+                    },
+                    ticks: {
+                      maxTicksLimit: 6
+                    }
+                  }],
+                  yAxes: [{
+                    ticks: {
+                      min: 0,
+                      max: 100,
+                      maxTicksLimit: 10
+                    },
+                    scaleLabel: {
+                      display: true,
+                      labelString: 'Percentage'
+                    },
+                    gridLines: {
+                      display: true
+                    }
+                }],
+              },
+              legend: {
+                display: true
+              }
+            }
+          });
+        </script>
+
+        <canvas id="chart23"></canvas>
+        <script>
+          var ctx = document.getElementById("chart23");
+          var barColor = new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: ["2015", "2016", "2017", "2018", "2019"],
+              datasets: [{
+                label: "% Level 1",
+                backgroundColor: "red",
+                borderColor: "red",
+                data: [6.3, 6.6, 6.3, 5.9, 5.2],
+              },
+
+              {
+                label: "% Level 2",
+                backgroundColor: "blue",
+                borderColor: "blue",
+                data: [15.6, 15.1, 14.2, 11.2, 9.9],
+              },
+
+              {
+                label: "% Level 3",
+                backgroundColor: "green",
+                borderColor: "green",
+                data: [28.4, 25.2, 25.7, 22.9, 20.5],
+              },
+
+              {
+                label: "% Level 4",
+                backgroundColor: "purple",
+                borderColor: "purple",
+                data: [49.7, 53.0, 53.8, 60.0, 64.4],
+              }
+              ],
+            },
+            options: {
+              title: {
+                display: true,
+                text: 'Asian Percentiles (Manhattan)'
+              },
+                scales: {
+                  xAxes: [{
+                    time: {
+                      unit: 'month'
+                    },
+                    scaleLabel: {
+                      display: true,
+                      labelString: 'Year'
+                    },
+                    gridLines: {
+                      display: false
+                    },
+                    ticks: {
+                      maxTicksLimit: 6
+                    }
+                  }],
+                  yAxes: [{
+                    ticks: {
+                      min: 0,
+                      max: 100,
+                      maxTicksLimit: 10
+                    },
+                    scaleLabel: {
+                      display: true,
+                      labelString: 'Percentage'
+                    },
+                    gridLines: {
+                      display: true
+                    }
+                }],
+              },
+              legend: {
+                display: true
+              }
+            }
+          });
+        </script>
+
+        <canvas id="chart24"></canvas>
+        <script>
+          var ctx = document.getElementById("chart24");
+          var barColor = new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: ["2015", "2016", "2017", "2018", "2019"],
+              datasets: [{
+                label: "% Level 1",
+                backgroundColor: "red",
+                borderColor: "red",
+                data: [10.5, 10.4, 11.0, 10.5, 9.6],
+              },
+
+              {
+                label: "% Level 2",
+                backgroundColor: "blue",
+                borderColor: "blue",
+                data: [23.2, 22.7, 21.5, 17.1, 16.1],
+              },
+
+              {
+                label: "% Level 3",
+                backgroundColor: "green",
+                borderColor: "green",
+                data: [28.4, 26.1, 26.8, 25.8, 24.7],
+              },
+
+              {
+                label: "% Level 4",
+                backgroundColor: "purple",
+                borderColor: "purple",
+                data: [37.9, 40.8, 40.7, 46.6, 49.6],
+              }
+              ],
+            },
+            options: {
+              title: {
+                display: true,
+                text: 'Asian Percentiles (Queens)'
+              },
+                scales: {
+                  xAxes: [{
+                    time: {
+                      unit: 'month'
+                    },
+                    scaleLabel: {
+                      display: true,
+                      labelString: 'Year'
+                    },
+                    gridLines: {
+                      display: false
+                    },
+                    ticks: {
+                      maxTicksLimit: 6
+                    }
+                  }],
+                  yAxes: [{
+                    ticks: {
+                      min: 0,
+                      max: 100,
+                      maxTicksLimit: 10
+                    },
+                    scaleLabel: {
+                      display: true,
+                      labelString: 'Percentage'
+                    },
+                    gridLines: {
+                      display: true
+                    }
+                }],
+              },
+              legend: {
+                display: true
+              }
+            }
+          });
+        </script>
+
+        <canvas id="chart25"></canvas>
+        <script>
+          var ctx = document.getElementById("chart25");
+          var barColor = new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: ["2015", "2016", "2017", "2018", "2019"],
+              datasets: [{
+                label: "% Level 1",
+                backgroundColor: "red",
+                borderColor: "red",
+                data: [9.1, 10.3, 11.3, 9.9, 9.1],
+              },
+
+              {
+                label: "% Level 2",
+                backgroundColor: "blue",
+                borderColor: "blue",
+                data: [23.0, 21.8, 19.8, 16.9, 16.4],
+              },
+
+              {
+                label: "% Level 3",
+                backgroundColor: "green",
+                borderColor: "green",
+                data: [30.5, 28.9, 30.6, 27.5, 26.1],
+              },
+
+              {
+                label: "% Level 4",
+                backgroundColor: "purple",
+                borderColor: "purple",
+                data: [37.4, 39.0, 38.4, 45.7, 48.5],
+              }
+              ],
+            },
+            options: {
+              title: {
+                display: true,
+                text: 'Asian Percentiles (Staten Island)'
+              },
+                scales: {
+                  xAxes: [{
+                    time: {
+                      unit: 'month'
+                    },
+                    scaleLabel: {
+                      display: true,
+                      labelString: 'Year'
+                    },
+                    gridLines: {
+                      display: false
+                    },
+                    ticks: {
+                      maxTicksLimit: 6
+                    }
+                  }],
+                  yAxes: [{
+                    ticks: {
+                      min: 0,
+                      max: 100,
+                      maxTicksLimit: 10
+                    },
+                    scaleLabel: {
+                      display: true,
+                      labelString: 'Percentage'
+                    },
+                    gridLines: {
+                      display: true
+                    }
+                }],
+              },
+              legend: {
+                display: true
+              }
+            }
+          });
+        </script>
+      </div>
+
+      <div id="blackperc" style="width: 600; height: 600;">
+        <canvas id="chart26"></canvas>
+          <script>
+            var ctx = document.getElementById("chart26");
+            var barColor = new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels: ["2015", "2016", "2017", "2018", "2019"],
+                datasets: [{
+                  label: "% Level 1",
+                  backgroundColor: "red",
+                  borderColor: "red",
+                  data: [49.7, 48.8, 50.5, 49.7, 46.8],
+                },
+
+                {
+                  label: "% Level 2",
+                  backgroundColor: "blue",
+                  borderColor: "blue",
+                  data: [33.0, 32.9, 30.8, 27.6, 27.4],
+                },
+
+                {
+                  label: "% Level 3",
+                  backgroundColor: "green",
+                  borderColor: "green",
+                  data: [12.9, 12.7, 13.3, 15.3, 17.0],
+                },
+
+                {
+                  label: "% Level 4",
+                  backgroundColor: "purple",
+                  borderColor: "purple",
+                  data: [4.4, 5.6, 5.5, 7.4, 8.7],
+                }
+                ],
+              },
+              options: {
+                title: {
+                  display: true,
+                  text: 'Black Percentiles (Bronx)'
+                },
+                  scales: {
+                    xAxes: [{
+                      time: {
+                        unit: 'month'
+                      },
+                      scaleLabel: {
+                        display: true,
+                        labelString: 'Year'
+                      },
+                      gridLines: {
+                        display: false
+                      },
+                      ticks: {
+                        maxTicksLimit: 6
+                      }
+                    }],
+                    yAxes: [{
+                      ticks: {
+                        min: 0,
+                        max: 100,
+                        maxTicksLimit: 10
+                      },
+                      scaleLabel: {
+                        display: true,
+                        labelString: 'Percentage'
+                      },
+                      gridLines: {
+                        display: true
+                      }
+                  }],
+                },
+                legend: {
+                  display: true
+                }
+              }
+            });
+          </script>
+
+<canvas id="chart27"></canvas>
+<script>
+  var ctx = document.getElementById("chart27");
+  var barColor = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ["2015", "2016", "2017", "2018", "2019"],
+      datasets: [{
+        label: "% Level 1",
+        backgroundColor: "red",
+        borderColor: "red",
+        data: [45.7, 43.7, 44.5, 43.0, 41.0],
+      },
+
+      {
+        label: "% Level 2",
+        backgroundColor: "blue",
+        borderColor: "blue",
+        data: [34.2, 34.3, 33.0, 28.8, 28.1],
+      },
+
+      {
+        label: "% Level 3",
+        backgroundColor: "green",
+        borderColor: "green",
+        data: [14.7, 14.7, 15.5, 18.3, 19.2],
+      },
+
+      {
+        label: "% Level 4",
+        backgroundColor: "purple",
+        borderColor: "purple",
+        data: [5.4, 7.3, 7.1, 9.9, 11.7],
+      }
+      ],
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Black Percentiles (Brooklyn)'
+      },
+        scales: {
+          xAxes: [{
+            time: {
+              unit: 'month'
+            },
+            scaleLabel: {
+              display: true,
+              labelString: 'Year'
+            },
+            gridLines: {
+              display: false
+            },
+            ticks: {
+              maxTicksLimit: 6
+            }
+          }],
+          yAxes: [{
+            ticks: {
+              min: 0,
+              max: 100,
+              maxTicksLimit: 10
+            },
+            scaleLabel: {
+                display: true,
+                labelString: 'Percentage'
+              },
+            gridLines: {
+              display: true
+            }
+        }],
+      },
+      legend: {
+        display: true
+      }
+    }
+  });
+</script>
+
+<canvas id="chart28"></canvas>
+        <script>
+          var ctx = document.getElementById("chart28");
+          var barColor = new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: ["2015", "2016", "2017", "2018", "2019"],
+              datasets: [{
+                label: "% Level 1",
+                backgroundColor: "red",
+                borderColor: "red",
+                data: [48.3, 48.8, 50.6, 51.0, 46.1],
+              },
+
+              {
+                label: "% Level 2",
+                backgroundColor: "blue",
+                borderColor: "blue",
+                data: [32.2, 31.8, 29.0, 25.4, 27.8],
+              },
+
+              {
+                label: "% Level 3",
+                backgroundColor: "green",
+                borderColor: "green",
+                data: [13.7, 13.1, 14.2, 15.4, 16.8],
+              },
+
+              {
+                label: "% Level 4",
+                backgroundColor: "purple",
+                borderColor: "purple",
+                data: [5.8, 6.2, 6.2, 8.2, 9.3],
+              }
+              ],
+            },
+            options: {
+              title: {
+                display: true,
+                text: 'Black Percentiles (Manhattan)'
+              },
+                scales: {
+                  xAxes: [{
+                    time: {
+                      unit: 'month'
+                    },
+                    scaleLabel: {
+                      display: true,
+                      labelString: 'Year'
+                    },
+                    gridLines: {
+                      display: false
+                    },
+                    ticks: {
+                      maxTicksLimit: 6
+                    }
+                  }],
+                  yAxes: [{
+                    ticks: {
+                      min: 0,
+                      max: 100,
+                      maxTicksLimit: 10
+                    },
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Percentage'
+                      },
+                    gridLines: {
+                      display: true
+                    }
+                }],
+              },
+              legend: {
+                display: true
+              }
+            }
+          });
+        </script>
+
+<canvas id="chart29"></canvas>
+<script>
+  var ctx = document.getElementById("chart29");
+  var barColor = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ["2015", "2016", "2017", "2018", "2019"],
+      datasets: [{
+        label: "% Level 1",
+        backgroundColor: "red",
+        borderColor: "red",
+        data: [44.4, 43.7, 44.9, 44.3, 40.7],
+      },
+
+      {
+        label: "% Level 2",
+        backgroundColor: "blue",
+        borderColor: "blue",
+        data: [34.6, 35.5, 33.7, 29.2, 29.4],
+      },
+
+      {
+        label: "% Level 3",
+        backgroundColor: "green",
+        borderColor: "green",
+        data: [15.0, 14.6, 15.1, 17.5, 19.2],
+      },
+
+      {
+        label: "% Level 4",
+        backgroundColor: "purple",
+        borderColor: "purple",
+        data: [6.0, 6.3, 6.4, 9.0, 10.7],
+      }
+      ],
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Black Percentiles (Queens)'
+      },
+        scales: {
+          xAxes: [{
+            time: {
+              unit: 'month'
+            },
+            scaleLabel: {
+              display: true,
+              labelString: 'Year'
+            },
+            gridLines: {
+              display: false
+            },
+            ticks: {
+              maxTicksLimit: 6
+            }
+          }],
+          yAxes: [{
+            ticks: {
+              min: 0,
+              max: 100,
+              maxTicksLimit: 10
+            },
+            scaleLabel: {
+                display: true,
+                labelString: 'Percentage'
+              },
+            gridLines: {
+              display: true
+            }
+        }],
+      },
+      legend: {
+        display: true
+      }
+    }
+  });
+</script>
+
+<canvas id="chart30"></canvas>
+      <script>
+        var ctx = document.getElementById("chart30");
+        var barColor = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ["2015", "2016", "2017", "2018", "2019"],
+            datasets: [{
+              label: "% Level 1",
+              backgroundColor: "red",
+              borderColor: "red",
+              data: [49.8, 52.2, 51.6, 50.9, 49.0],
+            },
+
+            {
+              label: "% Level 2",
+              backgroundColor: "blue",
+              borderColor: "blue",
+              data: [33.4, 31.6, 31.2, 27.7, 27.7],
+            },
+
+            {
+              label: "% Level 3",
+              backgroundColor: "green",
+              borderColor: "green",
+              data: [12.7, 11.7, 12.5, 14.6, 15.0],
+            },
+
+            {
+              label: "% Level 4",
+              backgroundColor: "purple",
+              borderColor: "purple",
+              data: [4.0, 4.5, 4.7, 6.8, 8.3],
+            }
+            ],
+          },
+          options: {
+            title: {
+              display: true,
+              text: 'Black Percentiles (Staten Island)'
+            },
+              scales: {
+                xAxes: [{
+                  time: {
+                    unit: 'month'
+                  },
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Year'
+                  },
+                  gridLines: {
+                    display: false
+                  },
+                  ticks: {
+                    maxTicksLimit: 6
+                  }
+                }],
+                yAxes: [{
+                  ticks: {
+                    min: 0,
+                    max: 100,
+                    maxTicksLimit: 10
+                  },
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Percentage'
+                  },
+                  gridLines: {
+                    display: true
+                  }
+              }],
+            },
+            legend: {
+              display: true
+            }
+          }
+        });
+      </script>
+      </div>
+    </div>
+
+    <div style="margin-top: 1550px;">
+      <div id="hispanicperc" style="width: 600; height: 600;">
+        <canvas id="chart31"></canvas>
+        <script>
+          var ctx = document.getElementById("chart31");
+          var barColor = new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: ["2015", "2016", "2017", "2018", "2019"],
+              datasets: [{
+                label: "% Level 1",
+                backgroundColor: "red",
+                borderColor: "red",
+                data: [48.5, 47.5, 48.8, 47.6, 43.8],
+              },
+
+              {
+                label: "% Level 2",
+                backgroundColor: "blue",
+                borderColor: "blue",
+                data: [33.3, 33.3, 31.3, 27.7, 28.0],
+              },
+
+              {
+                label: "% Level 3",
+                backgroundColor: "green",
+                borderColor: "green",
+                data: [13.4, 13.4, 13.9, 16.5, 18.1],
+              },
+
+              {
+                label: "% Level 4",
+                backgroundColor: "purple",
+                borderColor: "purple",
+                data: [4.9, 5.9, 5.9, 8.2, 10.1],
+              }
+              ],
+            },
+            options: {
+              title: {
+                display: true,
+                text: 'Hispanic Percentiles (Bronx)'
+              },
+                scales: {
+                  xAxes: [{
+                    time: {
+                      unit: 'month'
+                    },
+                    scaleLabel: {
+                      display: true,
+                      labelString: 'Year'
+                    },
+                    gridLines: {
+                      display: false
+                    },
+                    ticks: {
+                      maxTicksLimit: 6
+                    }
+                  }],
+                  yAxes: [{
+                    ticks: {
+                      min: 0,
+                      max: 100,
+                      maxTicksLimit: 10
+                    },
+                    scaleLabel: {
+                    display: true,
+                    labelString: 'Percentage'
+                  },
+                    gridLines: {
+                      display: true
+                    }
+                }],
+              },
+              legend: {
+                display: true
+              }
+            }
+          });
+        </script>
+
+<canvas id="chart32"></canvas>
+<script>
+  var ctx = document.getElementById("chart32");
+  var barColor = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ["2015", "2016", "2017", "2018", "2019"],
+      datasets: [{
+        label: "% Level 1",
+        backgroundColor: "red",
+        borderColor: "red",
+        data: [40.4, 40.1, 41.4, 39.5, 37.6],
+      },
+
+      {
+        label: "% Level 2",
+        backgroundColor: "blue",
+        borderColor: "blue",
+        data: [35.5, 35.1, 32.5, 29.0, 28.5],
+      },
+
+      {
+        label: "% Level 3",
+        backgroundColor: "green",
+        borderColor: "green",
+        data: [17.0, 16.2, 17.4, 20.0, 20.4],
+      },
+
+      {
+        label: "% Level 4",
+        backgroundColor: "purple",
+        borderColor: "purple",
+        data: [7.2, 8.5, 8.8, 11.5, 13.6],
+      }
+      ],
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Hispanic Percentiles (Brooklyn)'
+      },
+        scales: {
+          xAxes: [{
+            time: {
+              unit: 'month'
+            },
+            scaleLabel: {
+              display: true,
+              labelString: 'Year'
+            },
+            gridLines: {
+              display: false
+            },
+            ticks: {
+              maxTicksLimit: 6
+            }
+          }],
+          yAxes: [{
+            ticks: {
+              min: 0,
+              max: 100,
+              maxTicksLimit: 10
+            },
+            scaleLabel: {
+                    display: true,
+                    labelString: 'Percentage'
+                  },
+            gridLines: {
+              display: true
+            }
+        }],
+      },
+      legend: {
+        display: true
+      }
+    }
+  });
+</script>
+
+<canvas id="chart33"></canvas>
+        <script>
+          var ctx = document.getElementById("chart33");
+          var barColor = new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: ["2015", "2016", "2017", "2018", "2019"],
+              datasets: [{
+                label: "% Level 1",
+                backgroundColor: "red",
+                borderColor: "red",
+                data: [41.3, 40.8, 40.4, 39.2, 35.9],
+              },
+
+              {
+                label: "% Level 2",
+                backgroundColor: "blue",
+                borderColor: "blue",
+                data: [34.9, 34.2, 32.5, 28.4, 27.7],
+              },
+
+              {
+                label: "% Level 3",
+                backgroundColor: "green",
+                borderColor: "green",
+                data: [16.5, 16.3, 17.2, 19.9, 21.7],
+              },
+
+              {
+                label: "% Level 4",
+                backgroundColor: "purple",
+                borderColor: "purple",
+                data: [7.2, 8.7, 9.9, 12.5, 14.7],
+              }
+              ],
+            },
+            options: {
+              title: {
+                display: true,
+                text: 'Hispanic Percentiles (Manhattan)'
+              },
+                scales: {
+                  xAxes: [{
+                    time: {
+                      unit: 'month'
+                    },
+                    scaleLabel: {
+                      display: true,
+                      labelString: 'Year'
+                    },
+                    gridLines: {
+                      display: false
+                    },
+                    ticks: {
+                      maxTicksLimit: 6
+                    }
+                  }],
+                  yAxes: [{
+                    ticks: {
+                      min: 0,
+                      max: 100,
+                      maxTicksLimit: 10
+                    },
+                    scaleLabel: {
+                    display: true,
+                    labelString: 'Percentage'
+                  },
+                    gridLines: {
+                      display: true
+                    }
+                }],
+              },
+              legend: {
+                display: true
+              }
+            }
+          });
+        </script>
+
+<canvas id="chart34"></canvas>
+<script>
+  var ctx = document.getElementById("chart34");
+  var barColor = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ["2015", "2016", "2017", "2018", "2019"],
+      datasets: [{
+        label: "% Level 1",
+        backgroundColor: "red",
+        borderColor: "red",
+        data: [31.9, 31.9, 34.2, 34.5, 32.6],
+      },
+
+      {
+        label: "% Level 2",
+        backgroundColor: "blue",
+        borderColor: "blue",
+        data: [37.6, 37.6, 35.0, 29.8, 29.6],
+      },
+
+      {
+        label: "% Level 3",
+        backgroundColor: "green",
+        borderColor: "green",
+        data: [20.9, 19.9, 20.0, 22.3, 22.7],
+      },
+
+      {
+        label: "% Level 4",
+        backgroundColor: "purple",
+        borderColor: "purple",
+        data: [9.6, 10.6, 10.7, 13.4, 15.2],
+      }
+      ],
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Hispanic Percentiles (Queens)'
+      },
+        scales: {
+          xAxes: [{
+            time: {
+              unit: 'month'
+            },
+            scaleLabel: {
+              display: true,
+              labelString: 'Year'
+            },
+            gridLines: {
+              display: false
+            },
+            ticks: {
+              maxTicksLimit: 6
+            }
+          }],
+          yAxes: [{
+            ticks: {
+              min: 0,
+              max: 100,
+              maxTicksLimit: 10
+            },
+            scaleLabel: {
+                    display: true,
+                    labelString: 'Percentage'
+                  },
+            gridLines: {
+              display: true
+            }
+        }],
+      },
+      legend: {
+        display: true
+      }
+    }
+  });
+</script>
+
+<canvas id="chart35"></canvas>
+        <script>
+          var ctx = document.getElementById("chart35");
+          var barColor = new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: ["2015", "2016", "2017", "2018", "2019"],
+              datasets: [{
+                label: "% Level 1",
+                backgroundColor: "red",
+                borderColor: "red",
+                data: [39.8, 39.7, 39.7, 39.4, 37.0],
+              },
+
+              {
+                label: "% Level 2",
+                backgroundColor: "blue",
+                borderColor: "blue",
+                data: [36.1, 36.0, 33.7, 29.0, 29.0],
+              },
+
+              {
+                label: "% Level 3",
+                backgroundColor: "green",
+                borderColor: "green",
+                data: [16.9, 16.2, 18.2, 20.6, 21.0],
+              },
+
+              {
+                label: "% Level 4",
+                backgroundColor: "purple",
+                borderColor: "purple",
+                data: [7.1, 8.1, 8.5, 11.0, 13.0],
+              }
+              ],
+            },
+            options: {
+              title: {
+                display: true,
+                text: 'Hispanic Percentiles (Staten Island)'
+              },
+                scales: {
+                  xAxes: [{
+                    time: {
+                      unit: 'month'
+                    },
+                    scaleLabel: {
+                      display: true,
+                      labelString: 'Year'
+                    },
+                    gridLines: {
+                      display: false
+                    },
+                    ticks: {
+                      maxTicksLimit: 6
+                    }
+                  }],
+                  yAxes: [{
+                    ticks: {
+                      min: 0,
+                      max: 100,
+                      maxTicksLimit: 10
+                    },
+                    scaleLabel: {
+                    display: true,
+                    labelString: 'Percentage'
+                  },
+                    gridLines: {
+                      display: true
+                    }
+                }],
+              },
+              legend: {
+                display: true
+              }
+            }
+          });
+        </script>
+      </div>
+
+      <div id="whiteperc" style="width: 600px; height: 600px;">
+        <canvas id="chart36"></canvas>
+        <script>
+          var ctx = document.getElementById("chart36");
+          var barColor = new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: ["2015", "2016", "2017", "2018", "2019"],
+              datasets: [{
+                label: "% Level 1",
+                backgroundColor: "red",
+                borderColor: "red",
+                data: [27.1, 27.1, 28.9, 29.9, 26.1],
+              },
+
+              {
+                label: "% Level 2",
+                backgroundColor: "blue",
+                borderColor: "blue",
+                data: [33.1, 31.7, 32.0, 25.8, 25.1],
+              },
+
+              {
+                label: "% Level 3",
+                backgroundColor: "green",
+                borderColor: "green",
+                data: [23.8, 23.0, 22.1, 24.1, 25.2],
+              },
+
+              {
+                label: "% Level 4",
+                backgroundColor: "purple",
+                borderColor: "purple",
+                data: [16.0, 18.3, 17.0, 20.2, 23.6],
+              }
+              ],
+            },
+            options: {
+              title: {
+                display: true,
+                text: 'White Percentiles (Bronx)'
+              },
+                scales: {
+                  xAxes: [{
+                    time: {
+                      unit: 'month'
+                    },
+                    scaleLabel: {
+                      display: true,
+                      labelString: 'Year'
+                    },  
+                    gridLines: {
+                      display: false
+                    },
+                    ticks: {
+                      maxTicksLimit: 6
+                    }
+                  }],
+                  yAxes: [{
+                    ticks: {
+                      min: 0,
+                      max: 100,
+                      maxTicksLimit: 10
+                    },
+                    scaleLabel: {
+                    display: true,
+                    labelString: 'Percentage'
+                  },
+                    gridLines: {
+                      display: true
+                    }
+                }],
+              },
+              legend: {
+                display: true
+              }
+            }
+          });
+        </script>
+
+        <canvas id="chart37"></canvas>
+        <script>
+          var ctx = document.getElementById("chart37");
+          var barColor = new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: ["2015", "2016", "2017", "2018", "2019"],
+              datasets: [{
+                label: "% Level 1",
+                backgroundColor: "red",
+                borderColor: "red",
+                data: [14.8, 15.1, 15.8, 15.2, 13.5],
+              },
+
+              {
+                label: "% Level 2",
+                backgroundColor: "blue",
+                borderColor: "blue",
+                data: [26.6, 25.4, 24.3, 20.6, 19.3],
+              },
+
+              {
+                label: "% Level 3",
+                backgroundColor: "green",
+                borderColor: "green",
+                data: [29.1, 26.5, 27.7, 27.2, 27.3],
+              },
+
+              {
+                label: "% Level 4",
+                backgroundColor: "purple",
+                borderColor: "purple",
+                data: [29.5, 33.0, 32.2, 37.0, 39.9],
+              }
+              ],
+            },
+            options: {
+              title: {
+                display: true,
+                text: 'White Percentiles (Brooklyn)'
+              },
+                scales: {
+                  xAxes: [{
+                    time: {
+                      unit: 'month'
+                    },
+                    scaleLabel: {
+                      display: true,
+                      labelString: 'Year'
+                    },
+                    gridLines: {
+                      display: false
+                    },
+                    ticks: {
+                      maxTicksLimit: 6
+                    }
+                  }],
+                  yAxes: [{
+                    ticks: {
+                      min: 0,
+                      max: 100,
+                      maxTicksLimit: 10
+                    },
+                    scaleLabel: {
+                    display: true,
+                    labelString: 'Percentage'
+                  },
+                    gridLines: {
+                      display: true
+                    }
+                }],
+              },
+              legend: {
+                display: true
+              }
+            }
+          });
+        </script>
+
+        <canvas id="chart38"></canvas>
+        <script>
+          var ctx = document.getElementById("chart38");
+          var barColor = new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: ["2015", "2016", "2017", "2018", "2019"],
+              datasets: [{
+                label: "% Level 1",
+                backgroundColor: "red",
+                borderColor: "red",
+                data: [7.1, 7.6, 6.7, 7.4, 6.0],
+              },
+
+              {
+                label: "% Level 2",
+                backgroundColor: "blue",
+                borderColor: "blue",
+                data: [16.7, 16.2, 15.3, 11.4, 10.8],
+              },
+
+              {
+                label: "% Level 3",
+                backgroundColor: "green",
+                borderColor: "green",
+                data: [29.4, 26.9, 28.0, 26.4, 24.7],
+              },
+
+              {
+                label: "% Level 4",
+                backgroundColor: "purple",
+                borderColor: "purple",
+                data: [46.8, 49.4, 50.0, 54.8, 58.5],
+              }
+              ],
+            },
+            options: {
+              title: {
+                display: true,
+                text: 'White Percentiles (Manhattan)'
+              },
+                scales: {
+                  xAxes: [{
+                    time: {
+                      unit: 'month'
+                    },
+                    scaleLabel: {
+                      display: true,
+                      labelString: 'Year'
+                    },
+                    gridLines: {
+                      display: false
+                    },
+                    ticks: {
+                      maxTicksLimit: 6
+                    }
+                  }],
+                  yAxes: [{
+                    ticks: {
+                      min: 0,
+                      max: 100,
+                      maxTicksLimit: 10
+                    },
+                    scaleLabel: {
+                    display: true,
+                    labelString: 'Percentage'
+                  },
+                    gridLines: {
+                      display: true
+                    }
+                }],
+              },
+              legend: {
+                display: true
+              }
+            }
+          });
+        </script>
+
+        <canvas id="chart39"></canvas>
+        <script>
+          var ctx = document.getElementById("chart39");
+          var barColor = new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: ["2015", "2016", "2017", "2018", "2019"],
+              datasets: [{
+                label: "% Level 1",
+                backgroundColor: "red",
+                borderColor: "red",
+                data: [15.7, 15.8, 16.5, 16.5, 15.0],
+              },
+
+              {
+                label: "% Level 2",
+                backgroundColor: "blue",
+                borderColor: "blue",
+                data: [29.8, 29.2, 27.2, 22.3, 20.9],
+              },
+
+              {
+                label: "% Level 3",
+                backgroundColor: "green",
+                borderColor: "green",
+                data: [29.3, 27.1, 28.5, 28.5, 28.1],
+              },
+
+              {
+                label: "% Level 4",
+                backgroundColor: "purple",
+                borderColor: "purple",
+                data: [25.1, 27.9, 27.8, 32.7, 36.0],
+              }
+              ],
+            },
+            options: {
+              title: {
+                display: true,
+                text: 'White Percentiles (Queens)'
+              },
+                scales: {
+                  xAxes: [{
+                    time: {
+                      unit: 'month'
+                    },
+                    scaleLabel: {
+                      display: true,
+                      labelString: 'Year'
+                    },
+                    gridLines: {
+                      display: false
+                    },
+                    ticks: {
+                      maxTicksLimit: 6
+                    }
+                  }],
+                  yAxes: [{
+                    ticks: {
+                      min: 0,
+                      max: 100,
+                      maxTicksLimit: 10
+                    },
+                    scaleLabel: {
+                    display: true,
+                    labelString: 'Percentage'
+                  },
+                    gridLines: {
+                      display: true
+                    }
+                }],
+              },
+              legend: {
+                display: true
+              }
+            }
+          });
+        </script>
+
+        <canvas id="chart40"></canvas>
+        <script>
+          var ctx = document.getElementById("chart40");
+          var barColor = new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: ["2015", "2016", "2017", "2018", "2019"],
+              datasets: [{
+                label: "% Level 1",
+                backgroundColor: "red",
+                borderColor: "red",
+                data: [17.5, 17.0, 17.5, 17.5, 15.8],
+              },
+
+              {
+                label: "% Level 2",
+                backgroundColor: "blue",
+                borderColor: "blue",
+                data: [34.4, 32.5, 30.4, 24.5, 22.9],
+              },
+
+              {
+                label: "% Level 3",
+                backgroundColor: "green",
+                borderColor: "green",
+                data: [28.3, 27.6, 29.1, 29.0, 29.3],
+              },
+
+              {
+                label: "% Level 4",
+                backgroundColor: "purple",
+                borderColor: "purple",
+                data: [19.9, 22.9, 23.1, 29.0, 32.0],
+              }
+              ],
+            },
+            options: {
+              title: {
+                display: true,
+                text: 'White Percentiles (Staten Island)'
+              },
+                scales: {
+                  xAxes: [{
+                    time: {
+                      unit: 'month'
+                    },
+                    scaleLabel: {
+                      display: true,
+                      labelString: 'Year'
+                    },
+                    gridLines: {
+                      display: false
+                    },
+                    ticks: {
+                      maxTicksLimit: 6
+                    }
+                  }],
+                  yAxes: [{
+                    ticks: {
+                      min: 0,
+                      max: 100,
+                      maxTicksLimit: 10
+                    },
+                    scaleLabel: {
+                    display: true,
+                    labelString: 'Percentage'
+                  },
+                    gridLines: {
+                      display: true
+                    }
+                }],
+              },
+              legend: {
+                display: true
+              }
+            }
+          });
+        </script>
+      </div>
+    </div>
+  </body>
 </html>
+
+<style>
+  
+  body {
+    background-color: #E1F2F1;
+  }
+</style>
+
